@@ -1,3 +1,6 @@
+let click = true; 
+let color = "black";
+
 function fillShetchPad (size) {
     let board = document.querySelector(".board");
     // to remove all the divs created to repopulate the board
@@ -22,3 +25,34 @@ function fillShetchPad (size) {
 
 fillShetchPad(16);
 
+// To populate the board with the input
+function changeSize(input) {
+  // To validate the input
+  if (input >= 2 && input <= 100) {
+      fillShetchPad(input);
+  } else
+      alert("Please pick a board size between 2 and 100 ")
+  }
+  
+
+function changeColour(choice) {
+  color = choice;
+}
+
+function colorSquare() {
+  // if click is true
+  if (click === true) {
+      // if color is equal to the colourful option selected then make it colourful
+    if (color === "random") {
+      this.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
+    } else {
+      this.style.backgroundColor = color;
+    }
+  }
+}
+
+function reSet() {
+let board = document.querySelector(".board");
+let squares = board.querySelectorAll("div");
+squares.forEach((div) => div.style.backgroundColor = "white");
+}
